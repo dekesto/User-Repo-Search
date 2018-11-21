@@ -19,8 +19,8 @@ repos_len = len(repos)
 repos_fork_len = len(repos_fork)
 
 print()
-
 print('Repositories:')
+
 for r in range(repos_len):
 
     print(repos[r].a.text)
@@ -28,8 +28,11 @@ for r in range(repos_len):
     print("---------------------------------------------------------------------------")
 
 print()
+if repos_fork_len == 0:
+    print()
+else:
+    print('Forks:')
 
-print('Forks:')
 for f in range(repos_fork_len):
     print(repos_fork[f].a.text)
     print(repo_des[f].text)
