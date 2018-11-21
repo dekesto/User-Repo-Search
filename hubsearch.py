@@ -12,15 +12,29 @@ Client.close()
 soup_page = soup(html_page, "html.parser")
 
 repos = soup_page.findAll('li', {'class': 'col-12 d-block width-full py-4 border-bottom public source'})
+repo_des = soup_page.findAll('p', {'class': 'col-9 d-inline-block text-gray mb-2 pr-4'})
+repos_fork = soup_page.findAll('li', {'class': 'col-12 d-block width-full py-4 border-bottom public fork'})
 
 repos_len = len(repos)
+repos_fork_len = len(repos_fork)
 
-for i in range(repos_len):
+print()
 
-    print(repos[i].a.text)
-    print(repos[i].p.text)
+print('Repositories:')
+for r in range(repos_len):
+
+    print(repos[r].a.text)
+    print(repo_des[r].text)
+    print("---------------------------------------------------------------------------")
+
+print()
+
+print('Forks:')
+for f in range(repos_fork_len):
+    print(repos_fork[f].a.text)
+    print(repo_des[f].text)
     print("---------------------------------------------------------------------------")
 
 
-print("Number of Repositories:", repos_len)
+print("Number of Repositories:", repos_len, "|", repos_fork_len, "Forks")
 
